@@ -1,4 +1,4 @@
 ajarkan saya membuat program di c untik sistem del expres 
 selainitu bagaimana cara menyimpan harga baik di kota medan,balige akarta surabaya
 buatkan kode c input kota medan dan bera bute. ucokk =1.5 berat buttett.total onngkir hitunng berdasarkan angka
-tolong  buatkan kode proram dalam bahasa c dan progrram harus menghitung otomatis biaya pengiriman di di del exspres dengan aturan input berpasangan yaitu kode kota dan berat buket dan logika  beratnya, berat paket ucok otomatis di hitung sebesar 1,5 kali
+tolong  buatkan kode proram dalam bahasa c dan progrram harus menghitung otomatis biaya pengiriman di di del exspres dengan aturan input berpasangan yaitu kode kota dan berat buket dan logika  beratnya, berat paket ucok otomati di hitung sebesar 1,5 kali

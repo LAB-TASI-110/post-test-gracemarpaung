@@ -1,0 +1,3 @@
+bantu aku buat tentang program hitung stok input pertama jumlah total dtam m, innput ke 2 input stok sebanyak n misalnya s1 s2 sampai sn yang di simpan dalam array. input ke 3 kode katagori barang yang di cari
+program harus bisa menjumlahkan total stok tapi hanya untuk kategori tertentu berdasarkan pola yang di minta, dan tolong pakai logika penjmlahannyayang dinamis menggunakan looping dan if condition
+bisa toong buatkan kode yang fleksibel di mana aku bisa menentukan kategorinya? tolong sediakan setiap komentar di setiap kode barisnya buat aku tau dan paham pas di tanya 

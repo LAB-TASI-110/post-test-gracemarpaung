@@ -2,33 +2,56 @@
 #include <string.h>
 
 int main() {
-    int pilihan, jumlah;
-    float total = 0;
-    char lanjut;
-
-    printf("=== Sistem Operasional Kafeteria ===\n");
-    printf("1. Nasi Goreng  - Rp 15.000\n");
-    printf("2. Ayam Penyet  - Rp 18.000\n");
-    printf("3. Es Teh Manis - Rp 5.000\n");
-    printf("====================================\n");
+    int pilihan;
+    float berat, total = 0, harga = 0, diskon = 0;
+    char nim[20];
+    char lagi;
 
     do {
-        printf("\nMasukkan nomor menu: ");
+        printf("\n=== KASIR LAUNDRY DEL ===\n");
+        printf("1. Cuci Kering        : Rp5000/kg\n");
+        printf("2. Cuci Setrika       : Rp7000/kg\n");
+        printf("3. Setrika saja       : Rp4000/kg\n");
+
+        printf("Pilih layanan (1-3): ");
         scanf("%d", &pilihan);
-        printf("Masukkan jumlah porsi: ");
-        scanf("%d", &jumlah);
 
-        if (pilihan == 1) total += 15000 * jumlah;
-        else if (pilihan == 2) total += 18000 * jumlah;
-        else if (pilihan == 3) total += 5000 * jumlah;
-        else printf("Menu tidak tersedia.\n");
+        printf("Masukkan berat (kg): ");
+        scanf("%f", &berat);
 
-        printf("Tambah pesanan lain? (y/n): ");
-        scanf(" %c", &lanjut);
-    } while (lanjut == 'y' || lanjut == 'Y');
+        // menentukan harga
+        switch(pilihan) {
+            case 1: harga = 5000; break;
+            case 2: harga = 7000; break;
+            case 3: harga = 4000; break;
+            default:
+                printf("Pilihan tidak valid!\n");
+                harga = 0;
+        }
 
-    printf("\nTotal yang harus dibayar: Rp %.2f\n", total);
-    printf("Terima kasih telah memesan!\n");
+        total += harga * berat;
+
+        printf("Tambah transaksi? (y/n): ");
+        scanf(" %c", &lagi);
+
+    } while(lagi == 'y' || lagi == 'Y');
+
+    // input NIM untuk diskon
+    printf("\nMasukkan NIM (jika mahasiswa, jika tidak isi 0): ");
+    scanf("%s", nim);
+
+    if(strcmp(nim, "0") != 0) {
+        diskon = 0.1 * total;
+    }
+
+    float bayar = total - diskon;
+
+    // output struk
+    printf("\n===== STRUK LAUNDRY DEL =====\n");
+    printf("Total        : Rp%.0f\n", total);
+    printf("Diskon       : Rp%.0f\n", diskon);
+    printf("Total Bayar  : Rp%.0f\n", bayar);
+    printf("Terima kasih!\n");
 
     return 0;
 }

@@ -1,5 +1,2 @@
-bagaimana cara mengggunakan struct agar saya bisa  dapat menyimpan data menu, harga stok dan naa, dann dengan lebih rapi sederhana  menggunakan bbanyak if -else?
-untuk menajemen stoknya bagai mana logika untuk mengurangi stok otomatis setiap kali ada pesanan  dan memunculkan stok seriapkali ada pesanan  jika stok habis?
-dan juga bagaimana supaya data transaksi harian tersimpan di dalam file . txt atau cvs dan tidak hilang saat program  langsung di matikan
-jadi caranya menambahkan logika diskon 10% jika pembeli memasukkan nim mahasiswa yang terdaftar sebagai member reguler?
-jadi kalau dia eror bagai mana menangani jika user tidak sengaja meminta input angka atau nomor menu, agar program tidak crashh?~
+buatlah sebuah kode program sistem yang mendukung operasional kafetaria it del, di bagian kassirnya dan buat hasil input aoutputnya
+saya mau sistemnya itu kasir laundry del

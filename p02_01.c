@@ -2,76 +2,82 @@
 #include <string.h>
 
 int main() {
-    char kode[10];
-    float beratButet, beratUcok, totalBerat, ongkirPerKg, totalOngkos;
-    char namaKota[20];
-    char asuransi[20];
-    float diskon = 0;
+    char kode[5];
+    float berat, total_berat = 0;
+    int ongkir_perkg;
+    float total_ongkir = 0;
+    
+    printf("=== DEL EXPRESS ===\n");
+    printf("DAFTAR ONGKOS KIRIM:\n");
+    printf("MDN - Medan     : 8000/kg (Dalam Pulau)\n");
+    printf("BLG - Balige    : 5000/kg (Dalam Pulau)\n");
+    printf("JKT - Jakarta   : 12000/kg (Luar Pulau)\n");
+    printf("SBY - Surabaya  : 13000/kg (Luar Pulau)\n");
+    printf("Ketik END untuk selesai\n\n");
 
     while (1) {
-        // Input Kode Kota
-        printf("Masukkan Kode Kota (atau 'END' untuk berhenti): ");
+        printf("Masukkan kode kota: ");
         scanf("%s", kode);
 
-        // Cek jika input adalah END
         if (strcmp(kode, "END") == 0) {
             break;
         }
 
-        // Input Berat Paket Butet
-        printf("Masukkan Berat Paket Butet (kg): ");
-        scanf("%f", &beratButet);
+        printf("Masukkan berat paket (kg): ");
+        scanf("%f", &berat);
 
-        // Menentukan Harga dan Nama Kota berdasarkan Kode
+        // Tentukan ongkir
         if (strcmp(kode, "MDN") == 0) {
-            strcpy(namaKota, "Medan");
-            ongkirPerKg = 8000;
-            strcpy(asuransi, "-");
+            ongkir_perkg = 8000;
+            printf("Tujuan: Medan\n");
         } else if (strcmp(kode, "BLG") == 0) {
-            strcpy(namaKota, "Balige");
-            ongkirPerKg = 5000;
-            strcpy(asuransi, "-");
+            ongkir_perkg = 5000;
+            printf("Tujuan: Balige\n");
         } else if (strcmp(kode, "JKT") == 0) {
-            strcpy(namaKota, "Jakarta");
-            ongkirPerKg = 12000;
-            strcpy(asuransi, "Gratis"); // Luar Pulau
+            ongkir_perkg = 12000;
+            printf("Tujuan: Jakarta\n");
         } else if (strcmp(kode, "SBY") == 0) {
-            strcpy(namaKota, "Surabaya");
-            ongkirPerKg = 13000;
-            strcpy(asuransi, "Gratis"); // Luar Pulau
+            ongkir_perkg = 13000;
+            printf("Tujuan: Surabaya\n");
         } else {
-            printf("Kode Kota tidak valid!\n\n");
+            printf("Kode tidak valid!\n\n");
             continue;
         }
 
-        // Logika Perhitungan Berat (Ucok = 1.5 * Butet)
-        beratUcok = 1.5 * beratButet;
-        totalBerat = beratButet + beratUcok;
+        total_berat += berat;
+        total_ongkir += berat * ongkir_perkg;
 
-        // Hitung Ongkos Dasar
-        totalOngkos = totalBerat * ongkirPerKg;
-
-        // Logika Promo Lebaran (Diskon 10% jika berat > 10kg)
-        diskon = 0;
-        if (totalBerat > 10) {
-            diskon = 0.10 * totalOngkos;
-            totalOngkos = totalOngkos - diskon;
-        }
-
-        // Output Struk Pembayaran
-        printf("\n========== STRUK PEMBAYARAN DEL-EXPRESS ==========\n");
-        printf("Kota Tujuan         : %s\n", namaKota);
-        printf("Berat Paket Butet   : %.2f kg\n", beratButet);
-        printf("Berat Paket Ucok    : %.2f kg\n", beratUcok);
-        printf("Total Berat         : %.2f kg\n", totalBerat);
-        printf("--------------------------------------------------\n");
-        printf("Diskon (10%%)        : Rp %.2f\n", diskon);
-        printf("Asuransi            : %s\n", asuransi);
-        printf("TOTAL ONGKOS KIRIM  : Rp %.2f\n", totalOngkos);
-        printf("==================================================\n\n");
+        printf("--------------------------\n");
     }
 
-    printf("Program Selesai. Terima kasih!\n");
+    // Promo
+    float diskon = 0;
+    int asuransi = 0;
+
+    if (total_berat > 10) {
+        diskon = 0.1 * total_ongkir;
+    }
+
+    // cek luar pulau (JKT / SBY)
+    if (strstr("JKT SBY", kode) != NULL) {
+        asuransi = 1;
+    }
+
+    float total_bayar = total_ongkir - diskon;
+
+    printf("\n=== HASIL AKHIR ===\n");
+    printf("Total Berat Paket : %.2f kg\n", total_berat);
+    printf("Total Ongkir      : Rp %.0f\n", total_ongkir);
+    printf("Diskon            : Rp %.0f\n", diskon);
+    printf("Total Bayar       : Rp %.0f\n", total_bayar);
+
+    if (asuransi) {
+        printf("Promo             : Asuransi GRATIS (Luar Pulau)\n");
+    }
+
+    if (diskon > 0) {
+        printf("Promo             : Diskon 10%% (Lebih dari 10kg)\n");
+    }
 
     return 0;
 }
